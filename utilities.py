@@ -1,4 +1,4 @@
-from typing import List,Union
+from typing import List, Optional, Union 
 
 
 def split_segment(segment: str, segment_delimiter: str = "*") -> List[str]:
@@ -35,6 +35,23 @@ def find_identifier(segment: Union[str, dict]) -> str:
         return list(segment.keys())[0]
     else:
         raise TypeError("Invalid segment type. Must be string or dictionary.")
+
+def get_element(segment: List[str], index: int, default=None) -> Optional[str]:
+    """Gets an element from a list, handling cases where the index might be out of range.
+
+    Args:
+        segment (List[str]): The list of elements.
+        index (int): The index of the desired element.
+        default: The default value to return if the index is out of range.
+
+    Returns:
+        Optional[str]: The element at the specified index or the default value.
+    """
+    element = default
+    if index < len(segment):
+        element = segment[index]
+    return element
+
 
 if __name__ == "__main__":
     pass 

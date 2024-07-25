@@ -1,10 +1,10 @@
 from typing import List
 
-from edi_835_parser.elements.identifier import Identifier
-from edi_835_parser.elements.claim_status import ClaimStatus
-from edi_835_parser.elements.dollars import Dollars
-from edi_835_parser.elements.claim_type import ClaimType
-from edi_835_parser.segments.utilities import split_segment, get_element
+from elements.identifier import Identifier
+from elements.claim_status import ClaimStatus
+from elements.dollars import Dollars
+from elements.claim_type import ClaimType
+from utilities import split_segment, get_element
 
 
 class Claim:

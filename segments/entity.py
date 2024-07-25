@@ -1,10 +1,10 @@
 from typing import List, Optional
 
-from edi_835_parser.elements.identifier import Identifier
-from edi_835_parser.elements.entity_code import EntityCode
-from edi_835_parser.elements.entity_type import EntityType
-from edi_835_parser.elements.identification_code_qualifier import IdentificationCodeQualifier
-from edi_835_parser.segments.utilities import split_segment, get_element
+from elements.identifier import Identifier
+from elements.entity_code import EntityCode
+from elements.entity_type import EntityType
+from elements.identification_code_qualifier import IdentificationCodeQualifier
+from utilities import split_segment, get_element
 
 
 class Entity:

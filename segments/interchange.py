@@ -1,10 +1,10 @@
 from typing import List
 
-from edi_835_parser.elements.identifier import Identifier
-from edi_835_parser.elements.organization import Organization
-from edi_835_parser.elements.date import Date
-from edi_835_parser.elements.authorization_information_qualifier import AuthorizationInformationQualifier
-from edi_835_parser.segments.utilities import split_segment, get_element
+from elements.identifier import Identifier
+from elements.organization import Organization
+from elements.date import Date
+from elements.authorization_information_qualifier import AuthorizationInformationQualifier
+from utilities import split_segment, get_element
 
 
 class Interchange:

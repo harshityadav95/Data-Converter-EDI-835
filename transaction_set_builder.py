@@ -4,7 +4,7 @@ from collections import namedtuple
 from loop_builder import LoopBuilder
 from segments.interchange import Interchange as InterchangeSegment
 from segments.financial_information import FinancialInformation as FinancialInformationSegment
-from segments.utilities import find_identifier
+from utilities import find_identifier
 from loops.organization import Organization as OrganizationLoop
 from loops.claim import Claim as ClaimLoop
 from loops.provider_adjustment import ProviderAdjustment as ProviderAdjustmentLoop

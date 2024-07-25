@@ -1,9 +1,9 @@
 from typing import List
 
-from edi_835_parser.elements.identifier import Identifier
-from edi_835_parser.elements.dollars import Dollars
-from edi_835_parser.elements.amount_qualifier import AmountQualifier
-from edi_835_parser.segments.utilities import split_segment
+from elements.identifier import Identifier
+from elements.dollars import Dollars
+from elements.amount_qualifier import AmountQualifier
+from utilities import split_segment
 
 
 class Amount:

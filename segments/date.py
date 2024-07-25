@@ -3,7 +3,7 @@ from typing import List
 from elements.identifier import Identifier
 from elements.date import Date as DateElement
 from elements.date_qualifier import DateQualifier
-from utilities import split_segment, get_element
+from utilities import split_segment
 
 
 class Date:

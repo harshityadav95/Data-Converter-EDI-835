@@ -1,8 +1,8 @@
 from typing import List
 
-from edi_835_parser.elements.identifier import Identifier
-from edi_835_parser.elements.reference_qualifier import ReferenceQualifier
-from edi_835_parser.segments.utilities import split_segment
+from elements.identifier import Identifier
+from elements.reference_qualifier import ReferenceQualifier
+from utilities import split_segment
 
 
 class Reference:

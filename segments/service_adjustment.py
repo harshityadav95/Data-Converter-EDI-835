@@ -1,10 +1,11 @@
 from typing import List
 
-from edi_835_parser.elements.identifier import Identifier
-from edi_835_parser.elements.dollars import Dollars
-from edi_835_parser.elements.adjustment_group_code import AdjustmentGroupCode
-from edi_835_parser.elements.adjustment_reason_code import AdjustmentReasonCode
-from edi_835_parser.segments.utilities import split_segment, get_element
+from elements.identifier import Identifier
+from elements.adjustment_group_code import AdjustmentGroupCode
+from elements.adjustment_reason_code import AdjustmentReasonCode
+from elements.dollars import Dollars
+from elements.integer import Integer  # Import Integer
+from utilities import split_segment, get_element
 
 
 class ServiceAdjustment:
@@ -16,7 +17,7 @@ class ServiceAdjustment:
     group_code = AdjustmentGroupCode()
     reason_code = AdjustmentReasonCode()
     amount = Dollars()
-    quantity = Integer()
+    quantity = Integer()  # Use Integer as a class attribute
 
     def __init__(self, segment: str):
         self.segment = segment

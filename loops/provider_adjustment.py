@@ -1,7 +1,7 @@
 from typing import Tuple, Iterator, Optional, List
 
-from edi_835_parser.segments.provider_level_adjustment import ProviderLevelAdjustment as PLBSegment
-from edi_835_parser.segments.utilities import find_identifier
+from segments.provider_level_adjustment import ProviderLevelAdjustment as PLBSegment
+from utilities import find_identifier
 
 class ProviderAdjustment:
     """Represents a provider adjustment loop in the EDI 835."""
