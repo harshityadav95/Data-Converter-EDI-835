@@ -1,4 +1,4 @@
-from typing import List
+from typing import List,Union
 
 
 def split_segment(segment: str, segment_delimiter: str = "*") -> List[str]:
