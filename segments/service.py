@@ -21,6 +21,7 @@ class Service:
     modifier = ServiceModifier()
     allowed_units = Integer()
     billed_units = Integer()
+    revenue_code = str()
 
     def __init__(self, segment: str):
         self.segment = segment
@@ -32,6 +33,7 @@ class Service:
         self.modifier = segment[1]
         self.charge_amount = get_element(segment, 2)
         self.paid_amount = get_element(segment, 3)
+        self.revenue_code = get_element(segment, 4)
 
         # assume unit count of one if unit not provided
         default = 0 if self.paid_amount == 0 else 1
@@ -49,7 +51,7 @@ class Service:
             self.code,  # The code property already includes qualifier and modifier
             self.charge_amount,
             self.paid_amount,
-            '',  # Placeholder for the composite element 
+            self.revenue_code if self.revenue_code else '',  # Include revenue code if present
             self.allowed_units,
             '',  # Placeholder for another composite element
             self.billed_units,
@@ -66,8 +68,8 @@ class Service:
         segment.paid_amount = data.get('paid_amount')
         segment.allowed_units = data.get('allowed_units')
         segment.billed_units = data.get('billed_units')
+        segment.revenue_code = data.get('revenue_code')
         return segment
-
 
 if __name__ == "__main__":
     pass

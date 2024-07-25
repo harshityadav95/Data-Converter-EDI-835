@@ -29,7 +29,7 @@ class Amount:
         """Converts the AMT segment back to its EDI representation."""
         elements = [
             self.identifier,
-            self.qualifier,  
+            self.qualifier, 
             self.amount,
         ]
         return '*'.join(str(element) for element in elements)
@@ -41,7 +41,5 @@ class Amount:
         segment.amount = data.get('amount')
         return segment
 
-
 if __name__ == "__main__":
     pass
-

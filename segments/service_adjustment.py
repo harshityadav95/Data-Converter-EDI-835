@@ -1,9 +1,9 @@
 from typing import List
 
 from edi_835_parser.elements.identifier import Identifier
+from edi_835_parser.elements.dollars import Dollars
 from edi_835_parser.elements.adjustment_group_code import AdjustmentGroupCode
 from edi_835_parser.elements.adjustment_reason_code import AdjustmentReasonCode
-from edi_835_parser.elements.dollars import Dollars
 from edi_835_parser.segments.utilities import split_segment, get_element
 
 
@@ -16,6 +16,7 @@ class ServiceAdjustment:
     group_code = AdjustmentGroupCode()
     reason_code = AdjustmentReasonCode()
     amount = Dollars()
+    quantity = Integer()
 
     def __init__(self, segment: str):
         self.segment = segment
@@ -25,7 +26,7 @@ class ServiceAdjustment:
         self.group_code = segment[1]
         self.reason_code = segment[2]
         self.amount = get_element(segment, 3)
-        self.quantity = get_element(segment, 4)  # Add quantity element 
+        self.quantity = get_element(segment, 4)
 
     def __repr__(self):
         return '\n'.join(str(item) for item in self.__dict__.items())
@@ -35,10 +36,10 @@ class ServiceAdjustment:
         elements = [
             self.identifier,
             self.group_code.code,  # Get code from AdjustmentGroupCode
-            self.reason_code.code, # Get code from AdjustmentReasonCode
+            self.reason_code.code,  # Get code from AdjustmentReasonCode
             self.amount,
             self.quantity if self.quantity else '',  # Include quantity if present
-            # Add any other missing elements as needed
+            # ... (Add other elements if present in your EDI data)
         ]
         return '*'.join(str(element) for element in elements)
 
@@ -51,6 +52,5 @@ class ServiceAdjustment:
         segment.quantity = data.get('quantity')
         return segment
 
-
 if __name__ == "__main__":
-    passHi
+    pass

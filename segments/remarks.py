@@ -41,6 +41,5 @@ class Remark:
         segment.code = RemarkCode().parser(data.get('code', {}).get('code'))
         return segment
 
-
 if __name__ == "__main__":
     pass

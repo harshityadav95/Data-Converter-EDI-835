@@ -1,16 +1,19 @@
 from typing import List
 
 from edi_835_parser.elements.identifier import Identifier
-from edi_835_parser.elements.reference_qualifier import ReferenceQualifier
-from edi_835_parser.segments.utilities import split_segment
+from edi_835_parser.elements.date import Date as DateElement
+from edi_835_parser.elements.date_qualifier import DateQualifier
+from edi_835_parser.segments.utilities import split_segment, get_element
 
 
-class Reference:
-    """Represents the REF segment (Reference Identification) in the EDI 835."""
-    identification = 'REF'
+class Date:
+    """Represents the DTM segment (Date/Time Reference) in the EDI 835."""
+
+    identification = 'DTM'
 
     identifier = Identifier()
-    qualifier = ReferenceQualifier()
+    qualifier = DateQualifier()
+    date = DateElement()
 
     def __init__(self, segment: str):
         self.segment = segment
@@ -18,25 +21,25 @@ class Reference:
 
         self.identifier = segment[0]
         self.qualifier = segment[1]
-        self.value = segment[2] if len(segment) > 2 else '' 
+        self.date = segment[2]
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return '\n'.join(str(item) for item in self.__dict__.items())
 
     def to_edi(self) -> str:
-        """Converts the REF segment back to its EDI representation."""
+        """Converts the DTM segment back to its EDI representation."""
         elements = [
             self.identifier,
-            self.qualifier.code,  # Get code from the ReferenceQualifier object
-            self.value,
+            self.qualifier,
+            self.date,
         ]
-        return '*'.join(elements)
+        return '*'.join(str(element) for element in elements)
 
     @classmethod
     def from_dict(cls, data: dict):
         segment = cls('')
-        segment.qualifier = ReferenceQualifier().parser(data.get('qualifier', {}).get('code'))
-        segment.value = data.get('value')
+        segment.qualifier = data.get('qualifier')
+        segment.date = data.get('date')
         return segment
 
 if __name__ == "__main__":

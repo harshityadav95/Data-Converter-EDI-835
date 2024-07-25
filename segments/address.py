@@ -4,9 +4,9 @@ from edi_835_parser.elements.identifier import Identifier
 from edi_835_parser.segments.utilities import split_segment, get_element
 
 
-class Location:
-    """Represents the N4 segment (Geographic Location) in the EDI 835."""
-    identification = 'N4'
+class Address:
+    """Represents the N3 segment (Address Information) in the EDI 835."""
+    identification = 'N3'
 
     identifier = Identifier()
 
@@ -15,31 +15,25 @@ class Location:
         segment = split_segment(segment)
 
         self.identifier = segment[0]
-        self.city = get_element(segment, 1)
-        self.state = get_element(segment, 2)
-        self.zip_code = get_element(segment, 3)
+        self.address = get_element(segment, 1) 
 
     def __repr__(self):
         return '\n'.join(str(item) for item in self.__dict__.items())
 
     def to_edi(self) -> str:
-        """Converts the N4 segment back to its EDI representation."""
+        """Converts the N3 segment back to its EDI representation."""
         elements = [
             self.identifier,
-            self.city,
-            self.state,
-            self.zip_code,
+            self.address,
+            # Add any other missing elements as needed 
         ]
         return '*'.join(elements)
 
     @classmethod
     def from_dict(cls, data: dict):
         segment = cls('')
-        segment.city = data.get('city')
-        segment.state = data.get('state')
-        segment.zip_code = data.get('zip_code')
+        segment.address = data.get('address')
         return segment
 
 if __name__ == "__main__":
     pass
-
